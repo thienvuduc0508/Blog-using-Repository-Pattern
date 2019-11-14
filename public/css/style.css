@@ -1,0 +1,19 @@
+.container-fluid{
+    border-top: solid 17px #090909;
+}
+header{
+    padding: 17px 0;
+}
+.slide{
+    padding-bottom: 30px;
+}
+.span1{
+    color: white;
+    padding-left: 20px;
+}
+#search{
+    padding-left: 10px;
+}
+.search {
+    padding-left: 30px;
+}
