@@ -72,12 +72,12 @@
                                 </div>
                                 <div class="m-card-profile__pic">
                                     <div class="m-card-profile__pic-wrapper">
-                                        <img src="../assets/app/media/img/users/user4.jpg" alt="" />
+                                        <img src="{{asset("assets/app/media/img/users/user4.jpg")}}" alt="" />
                                     </div>
                                 </div>
                                 <div class="m-card-profile__details">
-                                    <span class="m-card-profile__name">Mark Andre</span>
-                                    <a href="" class="m-card-profile__email m-link">mark.andre@gmail.com</a>
+                                    <span class="m-card-profile__name">{{$user->name}}</span>
+                                    <a href="" class="m-card-profile__email m-link">{{$user->email}}</a>
                                 </div>
                             </div>
                             <ul class="m-nav m-nav--hover-bg m-portlet-fit--sides">
@@ -85,19 +85,7 @@
                                 <li class="m-nav__section m--hide">
                                     <span class="m-nav__section-text">Section</span>
                                 </li>
-                                <li class="m-nav__item">
-                                    <a href="../header/profile&amp;demo=default.html" class="m-nav__link">
-                                        <i class="m-nav__link-icon flaticon-profile-1"></i>
-                                        <span class="m-nav__link-title">
-														<span class="m-nav__link-wrap">
-															<span class="m-nav__link-text">My Profile</span>
-															<span class="m-nav__link-badge">
-																<span class="m-badge m-badge--success">2</span>
-															</span>
-														</span>
-													</span>
-                                    </a>
-                                </li>
+
                                 <li class="m-nav__item">
                                     <a href="../header/profile&amp;demo=default.html" class="m-nav__link">
                                         <i class="m-nav__link-icon flaticon-share"></i>
@@ -272,13 +260,13 @@
                                         <div class="form-group m-form__group row">
                                             <label for="example-text-input" class="col-2 col-form-label">Full Name</label>
                                             <div class="col-7">
-                                                <input class="form-control m-input" type="text" value="Mark Andre">
+                                                <input class="form-control m-input" type="text" value="{{$user->name}}">
                                             </div>
                                         </div>
                                         <div class="form-group m-form__group row">
-                                            <label for="example-text-input" class="col-2 col-form-label">Occupation</label>
+                                            <label for="example-text-input" class="col-2 col-form-label">Role</label>
                                             <div class="col-7">
-                                                <input class="form-control m-input" type="text" value="CTO">
+                                                <input class="form-control m-input" type="text" value="{{$user->roles->pluck('name')}}">
                                             </div>
                                         </div>
                                         <div class="form-group m-form__group row">
@@ -318,42 +306,7 @@
                                                 <input class="form-control m-input" type="text" value="California">
                                             </div>
                                         </div>
-                                        <div class="form-group m-form__group row">
-                                            <label for="example-text-input" class="col-2 col-form-label">Postcode</label>
-                                            <div class="col-7">
-                                                <input class="form-control m-input" type="text" value="45000">
-                                            </div>
-                                        </div>
                                         <div class="m-form__seperator m-form__seperator--dashed m-form__seperator--space-2x"></div>
-                                        <div class="form-group m-form__group row">
-                                            <div class="col-10 ml-auto">
-                                                <h3 class="m-form__section">3. Social Links</h3>
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-form__group row">
-                                            <label for="example-text-input" class="col-2 col-form-label">Linkedin</label>
-                                            <div class="col-7">
-                                                <input class="form-control m-input" type="text" value="www.linkedin.com/Mark.Andre">
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-form__group row">
-                                            <label for="example-text-input" class="col-2 col-form-label">Facebook</label>
-                                            <div class="col-7">
-                                                <input class="form-control m-input" type="text" value="www.facebook.com/Mark.Andre">
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-form__group row">
-                                            <label for="example-text-input" class="col-2 col-form-label">Twitter</label>
-                                            <div class="col-7">
-                                                <input class="form-control m-input" type="text" value="www.twitter.com/Mark.Andre">
-                                            </div>
-                                        </div>
-                                        <div class="form-group m-form__group row">
-                                            <label for="example-text-input" class="col-2 col-form-label">Instagram</label>
-                                            <div class="col-7">
-                                                <input class="form-control m-input" type="text" value="www.instagram.com/Mark.Andre">
-                                            </div>
-                                        </div>
                                     </div>
                                     <div class="m-portlet__foot m-portlet__foot--fit">
                                         <div class="m-form__actions">
