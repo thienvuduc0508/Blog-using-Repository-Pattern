@@ -1,7 +1,7 @@
 @extends('admin.master')
 @section('title', 'Edit User')
 @section('content')
-    @if($user->id !== 2)
+    @if($user->id !== 1)
     <div class="container justify-content-center">
         <form action="{{route('user.update',$user->id)}}" method="post" enctype="multipart/form-data">
             @csrf
