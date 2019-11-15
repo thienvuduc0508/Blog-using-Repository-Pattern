@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('admin.master')
+@section('title', 'Edit User')
 @section('content')
     @if($user->id !== 2)
     <div class="container justify-content-center">

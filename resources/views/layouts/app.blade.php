@@ -47,13 +47,13 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="{{route('user.index')}}"><span class="span1">User Action</span></a>
+                        <a class="nav-link" href="#"><span class="span1">News</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('role.index')}}"><span class="span1">Role Action</span></a>
+                        <a class="nav-link" href="#"><span class="span1">Services</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="{{route('post.index')}}"><span class="span1">Post Action</span></a>
+                        <a class="nav-link" href="#"><span class="span1">Contact</span></a>
                     </li>
 
                 <form class="form-inline search" >
@@ -65,11 +65,11 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ route('login') }}"><span class="span1">Login</span></a>
                     </li>
-                    @if (Route::has('register'))
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}"><span class="span1">Register</span></a>
-                        </li>
-                    @endif
+{{--                    @if (Route::has('register'))--}}
+{{--                        <li class="nav-item">--}}
+{{--                            <a class="nav-link" href="{{ route('register') }}"><span class="span1">Register</span></a>--}}
+{{--                        </li>--}}
+{{--                    @endif--}}
                 @else
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
@@ -80,6 +80,7 @@
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{{route('admin.index')}}"><span class="span">Admin Page</span></a>
                             <a class="dropdown-item" href="{{ route('logout') }}"
                                onclick=" event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -112,5 +113,4 @@
     </script>
 </body>
 @yield('script')
-
 </html>

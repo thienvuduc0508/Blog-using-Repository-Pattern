@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.master')
 @section('content')
     <div class="container justify-content-center">
         <form action="{{route('post.update',$post->id)}}" method="post" enctype="multipart/form-data">

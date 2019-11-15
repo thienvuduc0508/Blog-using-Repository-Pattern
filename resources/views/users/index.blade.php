@@ -1,4 +1,5 @@
-@extends('layouts.app')
+@extends('admin.master')
+@section('title','List User')
 @section('content')
     <div class="container">
      <div class="row">
@@ -25,7 +26,9 @@
                              <td>{{$user->name}}</td>
                              <td>{{$user->email}}</td>
                              <td>
-                                 @if( $user->id !== 2)
+                                 <a href="{{route('user.detail',$user->id)}}"><button type="button" class="btn btn-outline-warning">
+                                         <i class="fa fa-btn fa-eye"></i>
+                                     </button></a>
                                      <a href="{{route('user.edit',$user->id)}}"><button type="button" class="btn btn-outline-primary">
                                              <i class="fa fa-btn fa-edit"></i>
                                          </button>
@@ -35,7 +38,6 @@
                                              <i class="fa fa-btn fa-ban" ></i>
                                          </button>
                                      </a>
-                                 @endif
                              </td>
                          </tr>
                      @endforeach

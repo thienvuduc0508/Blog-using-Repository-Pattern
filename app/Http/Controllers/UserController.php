@@ -35,6 +35,11 @@ class UserController extends Controller
         return view("users.edit",compact('user','roles','rolesOfUser'));
     }
 
+    public function detail($id)
+    {
+        $user = $this->userService->findById($id);
+        return view('users.detail',compact('user'));
+    }
     public function update(Request $request,$id)
     {
         $this->userService->update($request,$id);
