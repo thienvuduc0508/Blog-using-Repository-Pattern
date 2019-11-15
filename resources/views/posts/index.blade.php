@@ -1,4 +1,3 @@
-
 @extends("admin.master")
 @section("content")
     <div class="m-grid__item m-grid__item--fluid m-wrapper">
@@ -15,7 +14,8 @@
                     <div class="m-portlet__head-tools">
                         <ul class="m-portlet__nav">
                             <li class="m-portlet__nav-item">
-                                <a href="{{route('post.create')}}" class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
+                                <a href="{{route('post.create')}}"
+                                   class="btn btn-accent m-btn m-btn--custom m-btn--pill m-btn--icon m-btn--air">
 												<span>
 													<i class="la la-plus"></i>
 													<span>New Post</span>
@@ -46,22 +46,23 @@
                             </thead>
                             <tbody>
                             @foreach($posts as $key=>$post)
-                                <tr style="font-size: 20px">
+                                <tr>
                                     <td>{{++$key}}</td>
                                     <td>{!! str_limit($post->title,20) !!}</td>
                                     <td>{!! str_limit($post->body,28) !!}</td>
                                     <td>
-                                        <img  src="{{asset("storage/$post->image")}}"
-                                              style="width: 50px;height: 50px; border-radius: 50px">
+                                        <img src="{{asset("storage/$post->image")}}"
+                                             style="width: 50px;height: 50px; border-radius: 50px">
                                     </td>
                                     <td>
-                                        <a href="{{route('post.edit',$post->id)}}"><button type="button" class="btn btn-outline-primary">
+                                        <a href="{{route('post.edit',$post->id)}}">
+                                            <button type="button" class="btn btn-outline-primary">
                                                 <i class="fa fa-btn fa-edit"></i>
                                             </button>
                                         </a>
-                                        <a href="{{route("post.delete",$post->id)}}"><button type="button" class="btn btn-outline-danger"
-                                                                                             onclick=" return confirm('Bạn chắc chắn muốn xóa ?')">
-                                                <i class="fa fa-btn fa-ban" ></i>
+                                        <a href="{{route('post.delete',$post->id)}}">
+                                            <button type="submit" class="btn btn-outline-danger" id="btn-delete" onclick="return confirm('Are you sure?')">
+                                                <i class="fa fa-btn fa-ban"></i>
                                             </button>
                                         </a>
                                     </td>
@@ -70,13 +71,43 @@
                             </tbody>
                         </table>
                     @endif
-                        {{$posts->links()}}
+                    {{$posts->links()}}
                 </div>
             </div>
         </div>
     </div>
-    {{--    <script src="{{asset("assets/vendors/base/vendors.bundle.js")}}" type="text/javascript"></script>--}}
-    {{--    <script src="{{asset("assets/demo/default/base/scripts.bundle.js")}}" type="text/javascript"></script>--}}
-    {{--    <script src="{{asset("assets/vendors/custom/datatables/datatables.bundle.js")}}" type="text/javascript"></script>--}}
-    {{--    <script src="{{asset("assets/demo/default/custom/crud/datatables/basic/basic.js")}}" type="text/javascript"></script>--}}
+    <script type="text/javascript">
+        $('#btn-delete').click(function (event) {
+            event.preventDefault();
+            Swal.fire({
+                title: 'Are you sure?',
+                text: "You won't be able to revert this!",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Yes, delete it!'
+            }).then((result) => {
+                if (result.value) {
+                    $.ajax({
+                        url: "{{route('post.delete',$post->id)}}",
+                        type: "POST",
+                        data: {'_method': 'DELETE'},
+                        success: function (data) {
+                            location.reload();
+                            Swal.fire(
+                                'Deleted!',
+                                'Your file has been deleted.',
+                                'success'
+                            )
+                        }
+                    });
+
+                } else {
+                    swal("Post is safe!");
+                }
+            });
+        });
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @endsection
