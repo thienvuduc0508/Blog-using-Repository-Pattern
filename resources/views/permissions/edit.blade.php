@@ -1,6 +1,5 @@
-@extends('layouts.app')
+@extends('admin.master')
 @section('content')
-    <div class="container justify-content-center">
         <form action="{{route('permission.update',$permission->id)}}" method="post" enctype="multipart/form-data">
             @csrf
             <h1 class="text-center mt-3">Update Permission</h1>
@@ -30,5 +29,4 @@
                 </a>
             </div>
         </form>
-    </div>
 @endsection

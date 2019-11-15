@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.master')
 @section('content')
     <div class="container justify-content-center">
         <form action="{{route('permission.store')}}" method="post" enctype="multipart/form-data">
