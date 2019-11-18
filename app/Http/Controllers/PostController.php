@@ -21,8 +21,12 @@ class PostController extends Controller
         $this->postService = $postService;
     }
     public function index(){
-        $posts = $this->postService->getAll();
-        return view("posts.index",compact('posts'));
+        if (Gate::allows('CRUD-post')){
+            $posts = $this->postService->getAll();
+            return view("posts.index",compact('posts'));
+        }
+        return abort(403);
+
     }
 
     public function create()
