@@ -76,38 +76,38 @@
             </div>
         </div>
     </div>
-    <script type="text/javascript">
-        $('#btn-delete').click(function (event) {
-            event.preventDefault();
-            Swal.fire({
-                title: 'Are you sure?',
-                text: "You won't be able to revert this!",
-                icon: 'warning',
-                showCancelButton: true,
-                confirmButtonColor: '#3085d6',
-                cancelButtonColor: '#d33',
-                confirmButtonText: 'Yes, delete it!'
-            }).then((result) => {
-                if (result.value) {
-                    $.ajax({
-                        url: "{{route('post.delete',$post->id)}}",
-                        type: "POST",
-                        data: {'_method': 'DELETE'},
-                        success: function (data) {
-                            location.reload();
-                            Swal.fire(
-                                'Deleted!',
-                                'Your file has been deleted.',
-                                'success'
-                            )
-                        }
-                    });
+{{--    <script type="text/javascript">--}}
+{{--        $('#btn-delete').click(function (event) {--}}
+{{--            event.preventDefault();--}}
+{{--            Swal.fire({--}}
+{{--                title: 'Are you sure?',--}}
+{{--                text: "You won't be able to revert this!",--}}
+{{--                icon: 'warning',--}}
+{{--                showCancelButton: true,--}}
+{{--                confirmButtonColor: '#3085d6',--}}
+{{--                cancelButtonColor: '#d33',--}}
+{{--                confirmButtonText: 'Yes, delete it!'--}}
+{{--            }).then((result) => {--}}
+{{--                if (result.value) {--}}
+{{--                    $.ajax({--}}
+{{--                        url: "{{route('post.delete',$post->id)}}",--}}
+{{--                        type: "POST",--}}
+{{--                        data: {'_method': 'DELETE'},--}}
+{{--                        success: function (data) {--}}
+{{--                            location.reload();--}}
+{{--                            Swal.fire(--}}
+{{--                                'Deleted!',--}}
+{{--                                'Your file has been deleted.',--}}
+{{--                                'success'--}}
+{{--                            )--}}
+{{--                        }--}}
+{{--                    });--}}
 
-                } else {
-                    swal("Post is safe!");
-                }
-            });
-        });
-    </script>
+{{--                } else {--}}
+{{--                    swal("Post is safe!");--}}
+{{--                }--}}
+{{--            });--}}
+{{--        });--}}
+{{--    </script>--}}
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@9"></script>
 @endsection

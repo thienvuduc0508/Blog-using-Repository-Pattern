@@ -93,7 +93,7 @@
                                         <div class="form-group m-form__group row">
                                             <label for="example-text-input" class="col-2 col-form-label">Role</label>
                                             <div class="col-7">
-                                                <input class="form-control m-input" type="text" value="{{$user->roles->pluck('name')}}" disabled>
+                                                <input class="form-control m-input" type="text" value="{{ $user->roles->pluck('name')}}" disabled>
                                             </div>
                                         </div>
                                         <div class="form-group m-form__group row">

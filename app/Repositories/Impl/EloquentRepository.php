@@ -11,7 +11,6 @@ Abstract class EloquentRepository implements RepositoryInterface
     protected $model;
 
     abstract public function getModel();
-
     public function setModel()
     {
         $this->model = app()->make($this->getModel());
