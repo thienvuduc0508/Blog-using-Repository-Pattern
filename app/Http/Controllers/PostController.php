@@ -15,7 +15,8 @@ class PostController extends Controller
 {
     protected $postService;
 
-    public function __construct(PostServiceInterface $postService)
+    public function __construct(PostServiceInterface $postService
+                                )
     {
         $this->postService = $postService;
     }

@@ -10,7 +10,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
     use Notifiable;
-    use SoftDeletes;
 
     protected $dates = ['delete_at'];
     /**
@@ -57,19 +56,6 @@ class User extends Authenticatable
         return $this->belongsToMany(Role::class,'role_users');
     }
 
-
-//    public function assignRole($role)
-//    {
-//        if(is_string($role))
-//        {
-//            return $this->roles()->save($role);
-//
-//        }
-//
-//        return $this->roles()->save(
-//            Role::whereName($role)->first()
-//        );
-//    }
 
     public function hasRole($role)
     {

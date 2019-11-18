@@ -35,7 +35,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         });
         Route::group(['prefix' => 'user'], function () {
-            Route::get('/', 'UserController@index')->name('user.index')->middleware('can:MOD');
+            Route::get('/', 'UserController@index')->name('user.index')->middleware('can:CRUD-user');
             Route::get('edit/{id}', 'UserController@edit')->name('user.edit')->middleware('can:CRUD-user');
             Route::post('update/{id}', 'UserController@update')->name('user.update')->middleware('can:CRUD-user');
             Route::get('delete/{id}', 'UserController@destroy')->name('user.delete')->middleware('can:CRUD-user');
@@ -43,7 +43,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         });
         Route::group(['prefix' => 'role'], function () {
-            Route::get('/', 'RoleController@index')->name('role.index')->middleware('can:MOD');
+            Route::get('/', 'RoleController@index')->name('role.index')->middleware('can:CRUD-role');
             Route::get('create/', 'RoleController@create')->name('role.create')->middleware('can:CRUD-role');
             Route::post('create/', 'RoleController@store')->name('role.store')->middleware('can:CRUD-role');
             Route::get('edit/{id}', 'RoleController@edit')->name('role.edit')->middleware('can:CRUD-role');
@@ -52,7 +52,7 @@ Route::group(['middleware' => ['auth']], function () {
 
         });
         Route::group(['prefix' => 'permission'], function () {
-            Route::get('/', 'PermissionController@index')->name('permission.index')->middleware('can:MOD');
+            Route::get('/', 'PermissionController@index')->name('permission.index');
             Route::get('create/',
                 'PermissionController@create')->name('permission.create')->middleware('can:CRUD-permission');
             Route::post('create/',
