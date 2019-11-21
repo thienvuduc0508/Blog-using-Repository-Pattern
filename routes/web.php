@@ -13,14 +13,14 @@
 
 use Illuminate\Support\Facades\Route;
 
-
+Route::group(['middleware' => 'locale'], function () {
+    Route::get('change-language/{language}', 'Controller@changeLanguage')->name('user.change-language');
 Route::get('/', 'HomeController@index')->name('home');
 Route::get('/post/detail/{id}', 'PostController@show')->name('post.detail');
 Route::post('comment/{id}', 'CommentController@createCommentInPost')->name('comment.create');
 Route::get('comment/{id}', 'CommentController@show')->name('comment.show');
-
-
 Auth::routes();
+
 
 Route::group(['middleware' => ['auth']], function () {
     Route::group(['prefix' => 'admin'], function () {
@@ -67,5 +67,6 @@ Route::group(['middleware' => ['auth']], function () {
         });
     });
 
+});
 });
 

@@ -58,16 +58,16 @@
                              style="width: 100%; height: 300px">
                         <h4 style="text-align: center; font-family: lusitana, serif; font-weight: bold">{!! str_limit($post->title,30) !!}</h4>
                         <div class="card-header text-muted" style="text-align: center">
-                            Posted on {{$post->created_at}} by
+                            {{__('messages.Posted on')}} {{$post->created_at}} {{__('messages.by')}}
                             @if(!empty($post->user->name))
                             <a href="#">{{$post->user->name}}</a>
                                 @else
-                                <a href="#"> Unknown User</a>
+                                <a href="#"> {{__('messages.Unknown User')}}</a>
                                 @endif
                         </div>
                         <div>
                             <p>{!! str_limit($post->body,100) !!}  </p>
-                            <a href="{{route('post.detail',$post->id)}}" class="btn btn-primary">Read More
+                            <a href="{{route('post.detail',$post->id)}}" class="btn btn-primary">{{__('messages.Read More')}}
                                 &rarr;</a>
                         </div>
                         <hr/>
