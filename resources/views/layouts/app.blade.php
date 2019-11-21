@@ -47,53 +47,66 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav mr-auto">
                     <li class="nav-item active">
-                        <a class="nav-link" href="#"><span class="span1">News</span></a>
+                        <a class="nav-link" href="#"><span class="span1">{{__('messages.News')}}</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><span class="span1">Services</span></a>
+                        <a class="nav-link" href="#"><span class="span1">{{__('messages.Services')}}</span></a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#"><span class="span1">Contact</span></a>
+                        <a class="nav-link" href="#"><span class="span1">{{__('messages.Contact')}}</span></a>
                     </li>
 
-                <form class="form-inline search" >
-                    <input class="form-control mr-sm-4" id="search" type="search" onkeyup="KeyUp()"
-                           onkeydown="KeyDown()" placeholder="Search" aria-label="Search" size="30px">
-                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-                </form>
-                @guest
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}"><span class="span1">Login</span></a>
-                    </li>
-{{--                    @if (Route::has('register'))--}}
-{{--                        <li class="nav-item">--}}
-{{--                            <a class="nav-link" href="{{ route('register') }}"><span class="span1">Register</span></a>--}}
-{{--                        </li>--}}
-{{--                    @endif--}}
-                @else
-                    <li class="nav-item dropdown">
-                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
-                           style="margin-left: 40px"
-                           data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                    <form class="form-inline search">
+                        <input class="form-control mr-sm-4" id="search" type="search" onkeyup="KeyUp()"
+                               onkeydown="KeyDown()" placeholder="{{__('messages.Search')}}" aria-label="Search" size="30px">
+                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">{{__('messages.Search')}}</button>
+                    </form>
+                    @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}"><span class="span1">{{__('messages.Login')}}</span></a>
+                        </li>
 
-                            <span class="span1">{{ Auth::user()->name }}</span>
-                        </a>
+                    @else
+                        <li class="nav-item dropdown">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
+                               style="margin-left: 40px"
+                               data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
 
-                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <span class="span1">{{ Auth::user()->name }}</span>
+                            </a>
 
-                            <a class="dropdown-item" href="{{route('admin.index')}}"><span class="span">Admin Page</span></a>
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                <a class="dropdown-item" href="{{route('admin.index')}}"><span
+                                        class="span">Admin Page</span></a>
 
                                 <a class="dropdown-item" href="{{ route('logout') }}"
-                               onclick=" event.preventDefault();
+                                   onclick=" event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
-                                <i class="fa fa-sign-out" style="margin-right: 5px"></i>Logout
-                            </a>
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                        </div>
+                                    <i class="fa fa-sign-out" style="margin-right: 5px"></i>Logout
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST"
+                                      style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+                        </li>
+                    @endguest
+                    <li class="nav-item">
+                        <a class="nav-link
+                            @if(Session::get('website_language') == 'en')
+                            text-danger
+                            @endif"
+                           href="{!! route('user.change-language', ['en']) !!}">EN <span
+                                class="sr-only">(current)</span></a>
                     </li>
-                @endguest
+                    <li class="nav-item">
+                        <a class="nav-link
+                            @if(Session::get('website_language') == 'vi')
+                            text-danger
+                            @endif
+                            " href="{!! route('user.change-language', ['vi']) !!}">Vi</a>
+                    </li>
                 </ul>
             </div>
         </nav>
@@ -105,14 +118,15 @@
 <script>
     CKEDITOR.replace('ckeditor');
 </script>
-    <script>
-        function KeyUp() {
-            document.getElementById('search').style.backgroundColor = 'white';
-        }
-        function KeyDown() {
-            document.getElementById('search').style.backgroundColor = 'green';
-        }
-    </script>
+<script>
+    function KeyUp() {
+        document.getElementById('search').style.backgroundColor = 'white';
+    }
+
+    function KeyDown() {
+        document.getElementById('search').style.backgroundColor = 'green';
+    }
+</script>
 </body>
 @yield('script')
 </html>
